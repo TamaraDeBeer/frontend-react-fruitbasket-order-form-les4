@@ -1,0 +1,36 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fruit-container {
+    display: flex;
+    border: black solid 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 333px;
+    height: 250px;
+}
+
+img {
+    width: 15%;
+}
+
+.fruit-button-container {
+    display: flex;
+    gap: 15px;
+    margin: 200px;
+    align-items: center;
+}
+
+.fruit-button {
+    padding: 25px;
+}
+
+.reset-button {
+    width: 100px;
+    padding: 20px;
+
+}
