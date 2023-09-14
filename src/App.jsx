@@ -46,14 +46,21 @@ function App() {
         }
     }
 
-    return (
+const resetForm = () => {
+        setQuantityKiwi(0);
+        setQuantityBanana(0);
+        setQuantityApple(0);
+        setQuantityStrawberry(0);
+}
+
+return (
     <>
         <main>
         <h1>Fruitmand bezorgservice</h1>
             <h2>Jouw winkelmandje:</h2>
 
             <div>
-                <img src={aardbei} alt="banaan afbeelding"/>
+                <img src={aardbei} alt="aardbei afbeelding"/>
                 <h2>Aardbeien</h2>
                 <button onClick={handleDecreaseStrawberry}>-</button>
                 <p>{quantityStrawberry}</p>
@@ -69,7 +76,7 @@ function App() {
             </div>
 
             <div>
-                <img src={appel} alt="banaan afbeelding"/>
+                <img src={appel} alt="appel afbeelding"/>
                 <h2>Appels</h2>
                 <button onClick={handleDecreaseApple}>-</button>
                 <p>{quantityApple}</p>
@@ -77,14 +84,15 @@ function App() {
             </div>
 
             <div>
-                <img src={kiwi} alt="banaan afbeelding"/>
+                <img src={kiwi} alt="kiwi afbeelding"/>
                 <h2>Kiwis</h2>
                 <button onClick={handleDecreaseKiwi}>-</button>
                 <p>{quantityKiwi}</p>
                 <button onClick={handleIncreaseKiwi}>+</button>
             </div>
+            <button type="button" onClick={resetForm}>Reset</button>
 
-        </main>
+            </main>
     </>
   )
 }
