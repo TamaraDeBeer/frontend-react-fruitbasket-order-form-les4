@@ -134,7 +134,10 @@
 
 import './App.css'
 import {useState} from "react";
+import { useForm } from 'react-hook-form';
 import Counter from "./components/Counter/Counter.jsx";
+import logo from "./assets/screenshot-logo.png";
+import Form from './components/Form/Form.jsx';
 
 function App() {
     const initialFruit = {
@@ -159,29 +162,175 @@ function App() {
 
     function fruitIncrement(fruit) {
         setFruits((prevState) => ({
-            ...prevState, [fruit]: prevState[fruit] + 1}))
+            ...prevState, [fruit]: prevState[fruit] + 1
+        }))
     }
 
     function fruitDecrement(fruit) {
         if (fruits[fruit] > 0) {
             setFruits((prevState) => ({
-                ...prevState, [fruit]: prevState[fruit] - 1}))
+                ...prevState, [fruit]: prevState[fruit] - 1
+            }))
         }
     }
 
-    return (
-        <>
-        <main>
-        <h1>Fruitmand bezorgservice</h1>
-            <Counter
-                reset={reset}
-                fruitObject={fruits}
-                fruitImageObject={fruitImage}
-                increment={fruitIncrement}
-                decrement={fruitDecrement}
-            />
-        </main>
-        </>)
-}
+    // function conditional styling kleur of bij decrement/increment stying voor kleur
+
+
+    // eslint-disable-next-line no-unused-vars
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    function handleFormSubmit(data) {
+        console.log(data);
+    }
+
+        return (
+            <>
+                <body>
+                <header>
+                    <img src={logo} alt="logo"/>
+                </header>
+
+                <main>
+                    <h1>Fruitmand bezorgservice</h1>
+                    <Counter
+                        reset={reset}
+                        fruitObject={fruits}
+                        fruitImageObject={fruitImage}
+                        increment={fruitIncrement}
+                        decrement={fruitDecrement}
+                    />
+
+                    <form onSubmit={handleSubmit(handleFormSubmit)}>
+                        {/*<Form*/}
+                        {/*    inputType="text"*/}
+                        {/*    inputName="name"*/}
+                        {/*    inputId="name-field"*/}
+                        {/*    inputLabel="Naam:"*/}
+                        {/*    validationRules={{*/}
+                        {/*        required: {*/}
+                        {/*            value: true,*/}
+                        {/*            message: 'Naam is verplicht',*/}
+                        {/*        }*/}
+                        {/*    }}*/}
+                        {/*    register={register}*/}
+                        {/*    errors={errors}*/}
+                        {/*/>*/}
+
+                        <label htmlFor="first-name">
+                            Voornaam:
+                            <input
+                                type="text"
+                                id="first-name"
+                                name="first-name"
+                            />
+                        </label>
+
+                        <label htmlFor="last-name">
+                            Achternaam:
+                            <input
+                                type="text"
+                                id="last-name"
+                                name="last-name"
+                            />
+                        </label>
+
+                        <label htmlFor="email">
+                            Email:
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                            />
+                        </label>
+
+                        <label htmlFor="age">
+                            Leeftijd:
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                            />
+                        </label>
+
+                        <label htmlFor="zip-code">
+                            Postcode:
+                            <input
+                                type="text"
+                                id="zip-code"
+                                name="zip-code"
+                            />
+                        </label>
+
+                        <label htmlFor="zip-code">
+                            Postcode:
+                            <input
+                                type="text"
+                                id="zip-code"
+                                name="zip-code"
+                            />
+                        </label>
+
+                        <label htmlFor="delivery-frequency">
+                            Bezorgfrequentie:
+                            <select name="delivery-frequency" id="delivery-frequency">
+                                <option value="every-week">Iedere week</option>
+                                <option value="every-other-week">Om de week</option>
+                                <option value="every-month">Iedere maand</option>
+                            </select>
+                        </label>
+
+                            <label htmlFor="day">
+                                Overdag
+                                <input
+                                    type="radio"
+                                    id="day"
+                                    name="delivery"
+                                    value="day"
+                                />
+                            </label>
+
+                        <label htmlFor="evening">
+                            's Avonds
+                            <input
+                                type="radio"
+                                id="evening"
+                                name="delivery"
+                                value="evening"
+                            />
+                        </label>
+
+                        <label htmlFor="message-field">
+                            Opmerking:
+                            <textarea
+                                id="message-field"
+                                rows="4"
+                                cols="40"
+                                placeholder="Laat je bericht achter"
+                                name="message-content"
+                            ></textarea>
+                        </label>
+
+                        <label htmlFor="terms-and-conditions-checkbox">
+                            <input
+                                type="checkbox"
+                                id="terms-and-conditions-checkbox"
+                                value="terms-and-conditions-checkbox"
+                            />
+                            Ik ga akkoord met de voorwaarden
+                        </label>
+
+
+                        <button type="submit">
+                            Versturen
+                        </button>
+                    </form>
+
+
+                </main>
+                </body>
+            </>);
+    }
+
 
 export default App;

@@ -37,3 +37,15 @@ main {
     padding: 20px;
     margin: 10px;
 }
+
+.active {
+    background-color: orange;
+}
+
+.default {
+    background-color: blue;
+}
+
+.prevState {
+    background-color: orange;
+}
