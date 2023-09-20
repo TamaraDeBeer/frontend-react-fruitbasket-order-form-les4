@@ -12,14 +12,11 @@ const Counter = ({fruitObject, increment, decrement, fruitImageObject, reset}) =
                         -</button>
                     <span>{fruitObject[fruit]}</span>
                     <button className="fruit-button" onClick={() => increment(fruit)}
-                        // className="fruit-button"
-                        // onClick={() => increment(fruit)}
-                        // className={increment(fruit) === increment(fruit) ? 'active' : 'default'}
                     >+</button>
                 </div>
             </div>)
     })}
-        <button className="reset-button" onClick={reset}>Reset</button>
+        <button className="button" onClick={reset}>Reset</button>
     </div>);
 };
 export default Counter;

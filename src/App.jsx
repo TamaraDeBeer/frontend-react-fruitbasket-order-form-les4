@@ -188,10 +188,11 @@ function App() {
             <>
                 <body>
                 <header>
-                    <img src={logo} alt="logo"/>
+                    <img src={logo} alt="logo" className="logo"/>
                 </header>
 
                 <main>
+
                     <h1>Fruitmand bezorgservice</h1>
                     <Counter
                         reset={reset}
@@ -202,91 +203,122 @@ function App() {
                     />
 
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
-                        {/*<Form*/}
-                        {/*    inputType="text"*/}
-                        {/*    inputName="name"*/}
-                        {/*    inputId="name-field"*/}
-                        {/*    inputLabel="Naam:"*/}
-                        {/*    validationRules={{*/}
-                        {/*        required: {*/}
-                        {/*            value: true,*/}
-                        {/*            message: 'Naam is verplicht',*/}
-                        {/*        }*/}
-                        {/*    }}*/}
-                        {/*    register={register}*/}
-                        {/*    errors={errors}*/}
-                        {/*/>*/}
+                        <Form
+                            inputType="text"
+                            inputName="first-name"
+                            inputId="first-name"
+                            inputLabel="Voornaam:"
+                            validationRules={{
+                                required: {
+                                    value: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                minLength: {
+                                    value: 3,
+                                    message: 'Input moet minstens 3 karakters bevatten',
+                                },
+                                }}
+                            register={register}
+                            errors={errors}
+                        />
 
-                        <label htmlFor="first-name">
-                            Voornaam:
-                            <input
-                                type="text"
-                                id="first-name"
-                                name="first-name"
-                            />
-                        </label>
+                        <Form
+                            inputType="text"
+                            inputName="last-name"
+                            inputId="last-name"
+                            inputLabel="Achternaam:"
+                            validationRules={{
+                                required: {
+                                    value: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                }}
+                            register={register}
+                            errors={errors}
+                        />
 
-                        <label htmlFor="last-name">
-                            Achternaam:
-                            <input
-                                type="text"
-                                id="last-name"
-                                name="last-name"
-                            />
-                        </label>
+                        <Form
+                            inputType="email"
+                            inputName="email"
+                            inputId="email"
+                            inputLabel="Email:"
+                            validationRules={{
+                                required: {
+                                    value: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                pattern: {
+                                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                    message: "Gelieve een geldig e-mailadres in te vullen",
+                                },
+                            }}
+                            register={register}
+                            errors={errors}
+                        />
 
-                        <label htmlFor="email">
-                            Email:
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                            />
-                        </label>
+                        <Form
+                            inputType="number"
+                            inputName="age"
+                            inputId="age"
+                            inputLabel="Leeftijd:"
+                            validationRules={{
+                                required: {
+                                    value: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                min: {
+                                    value: 2,
+                                    message: 'Input moet minstens 2 cijfers bevatten',
+                                },
+                            }}
+                            register={register}
+                            errors={errors}
+                        />
 
-                        <label htmlFor="age">
-                            Leeftijd:
-                            <input
-                                type="number"
-                                id="age"
-                                name="age"
-                            />
-                        </label>
+                        <Form
+                            inputType="text"
+                            inputName="zip-code"
+                            inputId="zip-code"
+                            inputLabel="Postcode:"
+                            validationRules={{
+                                required: {
+                                    value: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                pattern: {
+                                    value: /^([0-9]{4}[ ]+[a-zA-Z]{2})$/,
+                                    message: "Vul een geldige postcode in, bv: 1234 AB"
+                                },
+                            }}
+                            register={register}
+                            errors={errors}
+                        />
 
-                        <label htmlFor="zip-code">
-                            Postcode:
-                            <input
-                                type="text"
-                                id="zip-code"
-                                name="zip-code"
-                            />
-                        </label>
-
-                        <label htmlFor="zip-code">
-                            Postcode:
-                            <input
-                                type="text"
-                                id="zip-code"
-                                name="zip-code"
-                            />
-                        </label>
-
-                        <label htmlFor="delivery-frequency">
+                        <label htmlFor="delivery-frequency" className="contact-details-container">
                             Bezorgfrequentie:
-                            <select name="delivery-frequency" id="delivery-frequency">
+                            <select
+                                id="delivery-frequency"
+                                {...register("delivery-frequency", {
+                                    required: {
+                                        value: true,
+                                        message: "Dit veld is verplicht",
+                                    }
+                                })}
+                                >
                                 <option value="every-week">Iedere week</option>
                                 <option value="every-other-week">Om de week</option>
                                 <option value="every-month">Iedere maand</option>
                             </select>
                         </label>
 
+                        <div className="radio-button">
                             <label htmlFor="day">
                                 Overdag
                                 <input
                                     type="radio"
                                     id="day"
-                                    name="delivery"
                                     value="day"
+                                    {...register("delivery")}
                                 />
                             </label>
 
@@ -295,38 +327,42 @@ function App() {
                             <input
                                 type="radio"
                                 id="evening"
-                                name="delivery"
                                 value="evening"
+                                {...register("delivery")}
                             />
                         </label>
+                        </div>
 
-                        <label htmlFor="message-field">
+                        <label htmlFor="message-field" className="contact-details-container">
                             Opmerking:
                             <textarea
                                 id="message-field"
                                 rows="4"
                                 cols="40"
                                 placeholder="Laat je bericht achter"
-                                name="message-content"
+                                {...register("message-field")}
                             ></textarea>
                         </label>
 
-                        <label htmlFor="terms-and-conditions-checkbox">
+                        <label htmlFor="terms-and-conditions-checkbox" className="contact-details-container">
                             <input
                                 type="checkbox"
                                 id="terms-and-conditions-checkbox"
                                 value="terms-and-conditions-checkbox"
+                                {...register("terms-and-conditions-checkbox", {
+                                    required: true,
+                                    message: "Dit veld is verplicht",
+                                },
+                                )}
                             />
                             Ik ga akkoord met de voorwaarden
                         </label>
 
-
-                        <button type="submit">
+                        <button type="submit" className="button">
                             Versturen
                         </button>
+
                     </form>
-
-
                 </main>
                 </body>
             </>);

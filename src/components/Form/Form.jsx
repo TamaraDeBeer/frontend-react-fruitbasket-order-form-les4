@@ -1,7 +1,7 @@
 function Form({inputType, inputName, inputLabel, inputId, validationRules, register, errors}) {
     return (
         <>
-            <label htmlFor={inputId}>
+            <label htmlFor={inputId} className="contact-details-container">
                 {inputLabel}
                 <input
                     type={inputType}
@@ -9,7 +9,6 @@ function Form({inputType, inputName, inputLabel, inputId, validationRules, regis
                     {...register(inputName, validationRules)}
                 />
             </label>
-
             {errors[inputName] && <p>{errors[inputName].message}</p>}
         </>
     );
