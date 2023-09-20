@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Mooli&family=Roboto&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Mooli', sans-serif;
+    text-align: center;
+}
+
+.fruit-type {
+    text-transform: capitalize;
+}
+
+.fruit-container {
+    display: flex;
+    border: black solid 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+    height: 150px;
+}
+
+.fruit-button-container {
+    display: flex;
+    gap: 15px;
+    margin: 30px;
+    align-items: center;
+}
+
+.fruit-button {
+    padding: 20px;
+}
+
+.button {
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.active {
+    background-color: orange;
+}
+
+.default {
+    background-color: blue;
+}
+
+.prevState {
+    background-color: orange;
+}
+
+.contact-details-container {
+    display: flex;
+    gap: 15px;
+    margin: 30px;
+    align-items: center;
+}
+
+.radio-button {
+    display: flex;
+    gap: 15px;
+    margin: 30px;
+    align-items: center;
+}
